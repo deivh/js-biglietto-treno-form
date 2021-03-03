@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Ticket to Ride</title>
+</head>
+<body>
+    <div class="container">
+        <p id="age"></p>
+        <p id="km"></p>
+        <p id="price"></p>
+        <p id="saving"></p>
+
+    </div>
+    <script>
+        var kmUserStr = prompt("Inserisci il numero di km che intercorrono tra la partenza e la destinazione");
+        var kmUser = parseInt(kmUserStr);
+        console.log("Km totali: ", kmUser);
+        var ageUserStr = prompt("Inserisci la tua età")
+        var ageUser = parseInt(ageUserStr);
+        console.log("L'età inserita è :" , ageUser , "anni");
+        var priceFull = (kmUser * 0.21);
+        document.getElementById('age').innerHTML = "Hai " + ageUser + " anni.";
+        document.getElementById('km').innerHTML = "La distanza da percorrere è di " + kmUser + "km";
+        if (ageUser < 18) {
+            var priceDiscount20 = (priceFull / 100) * 80;
+            console.log("Il costo del biglietto è scontato del 20%: €", priceDiscount20);
+            var saving = priceFull - priceDiscount20;
+            console.log("Hai risparmiato: €", saving);
+            document.getElementById('price').innerHTML = "Il costo del tuo biglietto è di: €" + priceDiscount20;
+            document.getElementById('saving').innerHTML = "Hai risparmiato: €" + saving;
+        } else if (ageUser > 65) {
+            var priceDiscount40 = (priceFull / 100) * 60;
+            console.log("Il costo del biglietto è scontato del 40%: €" , priceDiscount40);
+            var saving = priceFull - priceDiscount40;
+            console.log("Hai risparmiato: €", saving);
+            document.getElementById('price').innerHTML = "Il costo del tuo biglietto è di: €" + priceDiscount40;
+            document.getElementById('saving').innerHTML = "Hai risparmiato: €" + saving;
+        } else {
+            console.log("Il costo del biglietto a prezzo pieno è di: €", priceFull);
+            document.getElementById('price').innerHTML = "Il costo del tuo biglietto è di: €" + priceFull;
+        }
+    </script>
+</body>
+</html>
